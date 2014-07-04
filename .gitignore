@@ -80,3 +80,6 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+# Annoying Mac file is annoying
+*DS_Store
