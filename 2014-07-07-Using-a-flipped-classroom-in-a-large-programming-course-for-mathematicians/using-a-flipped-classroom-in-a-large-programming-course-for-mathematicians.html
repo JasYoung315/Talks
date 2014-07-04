@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title></title>
+  <title>VK: Using a Flipped Classroom in a Large Programming Course for Mathematicians</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,6 +23,9 @@
     <!--[if lt IE 9]>
     <script src="../reveal.js/lib/js/html5shiv.js"></script>
     <![endif]-->
+
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
 </head>
 <body>
   <div class="reveal">
@@ -30,15 +33,84 @@
 
 
 <section id="title-slide" class="slide level1">
-<h1>Title Slide</h1>
+    <h1> I'm a fraud.</h1>
 </section>
+
+<section id="first-slide" class="slide level1">
+    <blockquote cite="Dr Sue Rigby">
+        &ldquo;
+        <font size="12">We can choose how we teach. We have to teach in a way that is fun.</font>
+        &rdquo;
+        <div align=right>Dr. Sue Rigby</div>
+    </blockquote>
+</section>
+
 <section id="second-slide" class="slide level1">
-<h1>Second Slide</h1>
-<p>More stuff happening here</p>
+    <pre><code data-trim contenteditable>
+        from __future__ import division
+        import random
+        class Drop():
+            def __init__(self, r=1):
+                self.x = (.5 - random.random()) * 2 * r
+                self.y = (.5 - random.random()) * 2 * r
+                self.incircle = (self.y) ** 2 + (self.x) ** 2 <= (r) ** 2
+
+        N = 10000
+        print 4 * len([k for k in range(N) if Drop().incircle]) / N
+    </code></pre>
 </section>
-<section id="some-more-stuff" class="slide level1">
-<h1>Some more stuff</h1>
-<p>Hello</p>
+
+<section id="PCUTL">
+<img src="https://lh4.googleusercontent.com/0cz3IrWHWxOWPg6L0cN4ZF9NuABMnPhXR1oyRhGlD6w=w1047-h771-no">
+</section>
+
+<section id="Goal">
+ILO
+</section>
+
+<section id="data">
+<img src="./Static/likeliness_of_work_before_lecture_by_school.png">
+</section>
+
+<section id="data">
+<img src="./Static/morelikelytodohwiftimetabled.png">
+</section>
+
+<section id="Structure">
+<img src="./Static/structure.png">
+</section>
+
+<section id="Tickables">
+<a href='http://drvinceknight.github.io/Computing_for_mathematics/LabSheets/Week_03.html' target='_blank'>Tickables</a>
+</section>
+
+<section id="Functions">
+
+    <section>
+        <iframe width="700" height="500" src="http://drvinceknight.github.io/Computing_for_mathematics/Handouts/handout02.html">
+        </iframe>
+    </section>
+
+    <section>
+        <iframe  width="700" height="500" src="http://drvinceknight.github.io/Computing_for_mathematics/Handouts/handout03.html">
+        </iframe>
+    </section>
+
+    <section>
+        <iframe  width="700" height="500" src="http://drvinceknight.github.io/Computing_for_mathematics/Handouts/handout04.html">
+        </iframe>
+    </section>
+</section>
+
+<section id='blackhack'>
+<iframe width="640" height="480" src="https://www.youtube.com/embed/1fovWGoVTT8" frameborder="0" allowfullscreen></iframe>
+</section>
+
+
+<section id="Matt-Lunn" class="slide level1">
+
+<iframe src="https://player.vimeo.com/video/88630585" width="700" height="393" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 </section>
     </div>
   </div>
