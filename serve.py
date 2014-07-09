@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Script to index the talks in this repository and create an index.html file.
 """
