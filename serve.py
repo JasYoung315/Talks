@@ -8,7 +8,7 @@ import re
 
 root = "./"
 directories = sorted([name for name in os.listdir(root) if os.path.isdir(os.path.join(root, name))], reverse=True)
-#talks = [name for name in directories if ]
+talk_formats = ['.pdf', '.html']
 
 
 index = open('index.html', 'w')
@@ -56,15 +56,15 @@ index.write("""
     <ul class='posts'>""")
 for dir in directories:
     if dir not in ['.git', 'reveal.js']:
-        talk = glob.glob(root + dir + "/" + dir[:10] + '*')[0]
+        talk = [f for f in glob.glob(root + dir + "/" + dir[:10] + '*') if  os.path.splitext(f)[1] in talk_formats][0]
         date = talk[len(root+dir) + 1: len(root + dir) + 11]
-        title = talk[len(root+dir)+11:].replace("-", " ")
+        title, extension =  os.path.splitext(talk[len(root+dir)+11:].replace("-", " "))
         index.write("""
                     <li>
                     <span class="post-date">%s</span>
-                    <a class="post-link" href="%s">%s</a>
+                    <a class="post-link" href="%s">%s [%s]</a>
                     </li>
-                    """ % (date, talk, title))
+                    """ % (date, talk, title, extension[1:]))
 index.write("""</ul>
                </div>
                </div>
