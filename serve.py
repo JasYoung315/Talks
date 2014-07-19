@@ -36,11 +36,12 @@ for dir in directories:
                     </p>
                     </li>
                     """ % (date, extension[1:], talk, title, 'https://github.com/drvinceknight/Talks/tree/gh-pages/' + dir ))
-index.write("""</ul>
-               </div>
-               </div>
-               </div>
-""")
+index.write("""
+            </ul>
+            </div>
+            </div>
+            </div>
+            """)
 index.write(open('footer.html', 'r').read())
 index.write("</body>")
 index.close()
