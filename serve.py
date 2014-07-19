@@ -29,10 +29,13 @@ for dir in directories:
         title, extension =  os.path.splitext(talk[len(root+dir)+11:].replace("-", " "))
         index.write("""
                     <li>
-                    <span class="post-date">%s</span>
-                    <a class="post-link" href="%s">%s [%s]</a>
+                    <span class="post-date">%s [%s]</span>
+                    <a class="post-link" href="%s">%s</a>
+                    <p>
+                    <a href="%s">(Source files)</a>
+                    </p>
                     </li>
-                    """ % (date, talk, title, extension[1:]))
+                    """ % (date, extension[1:], talk, title, 'https://github.com/drvinceknight/Talks/tree/gh-pages/' + dir ))
 index.write("""</ul>
                </div>
                </div>
