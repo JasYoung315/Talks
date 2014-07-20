@@ -2,6 +2,8 @@
 
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
 
 \title{Measuring the Price of Anarchy in Critical Care Unit Interactions}
 \author{Vincent Knight and Izabella Komenda}
@@ -23,13 +25,13 @@
 }
 
 \frame{
-\Huge
-\[
-    \begin{pmatrix}
-    (2,2)&(5,0)\\
-    (0,5)&(4,4)
-    \end{pmatrix}
-\]
+    \Huge
+    \[
+        \begin{pmatrix}
+        (2,2)&(5,0)\\
+        (0,5)&(4,4)
+        \end{pmatrix}
+    \]
 }
 
 \frame{
@@ -39,7 +41,36 @@
 }
 
 \frame{
+    \begin{center}
+        {\Huge What about the controllers?}\\
+        \vspace{1cm}
+    \end{center}
+        \pause
+        S. Deo and I. Gurvich. \textbf{Centralized vs. Decentralized Ambulance Diversion: A Network Perspective.} \textit{Management Science}, 57(7):1300–1319, May 2011.
+}
 
+\frame{
+    \begin{center}
+        [INCLUDE ANY PLOT FROM PAPER WITH IZA]
+    \end{center}
+    \pause
+    \textbf{Mathematical modelling of patient flows to predict critical care capacity required following the merger of two District General Hospitals into one.}, \textit{Submitted to Anaesthesia}
+}
+
+\frame{
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        \node (A) at (0,0) [draw] {RG};
+        \node (B) at (2,0) [draw] {NH};
+        \draw [->] (-1,0) -- (A);
+        \draw [->] (3,0) -- (B);
+        \draw [->] (-1,0) -- ($(A)+(-.5,0)$) -- ($(A)+(-.5,.5)$) -- ($(A)+(.5,.5)$) -- ($(A)+(.5,.1)$) -- ($(B)+(-.4,.1)$);
+        \draw [->] (3,0) -- ($(B)+(.5,0)$) -- ($(B)+(.5,-.5)$) -- ($(B)+(-.5,-.5)$) -- ($(B)+(-.5,-.1)$) -- ($(A)+(.4,-.1)$);
+        \draw [->] (3,0) -- (B);
+        \node at ($(A) + (0,.8)$) {Divert?};
+        \node at ($(B) + (0,-.8)$) {Divert?};
+    \end{tikzpicture}
+\end{center}
 }
 
 \end{document}
