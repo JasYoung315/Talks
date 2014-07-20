@@ -5,6 +5,9 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
+\newcommand{\NH}{\text{NH}}
+\newcommand{\RG}{\text{RG}}
+
 \title{Measuring the Price of Anarchy in Critical Care Unit Interactions}
 \author{Vincent Knight and Izabella Komenda}
 \date{2014-07-25}
@@ -69,6 +72,22 @@
         \draw [->] (3,0) -- (B);
         \node at ($(A) + (0,.8)$) {Divert?};
         \node at ($(B) + (0,-.8)$) {Divert?};
+    \end{tikzpicture}
+\end{center}
+}
+
+\frame{
+\begin{center}
+    \begin{tikzpicture}
+        \draw  (0,0) rectangle (4,3);
+        \draw [dashed, red, thick] (0,1) -- (4,1);
+        \draw [dashed, red, thick] (3,0) -- (3,3);
+        \node at (-.5,1) {$K_{\NH}$};
+        \node at (3,3.25) {$K_{\RG}$};
+        \node at (1.5,2) {$\lambda_{h}^{(a)}$};
+        \node at (3.5,2) {$\lambda_{h}^{(b)}$};
+        \node at (1.5,.5) {$\lambda_{h}^{(c)}$};
+        \node at (3.5,.5) {$\lambda_{h}^{(d)}$};
     \end{tikzpicture}
 \end{center}
 }
