@@ -20,10 +20,10 @@
 \begin{center}
 \href{}{+Vincent.Knight}\\
 \href{}{@drvinceknight}\\
-\url{www.vincent-knight.com}\\
 \url{drvinceknight.github.io/Talks}\\
 \vspace{1cm}
-\href{}{@IzabelaKomenda}
+\href{}{@IzabelaKomenda}\\
+Professor Jeff Griffiths
 \end{center}
 }
 
@@ -224,6 +224,102 @@ U_{\RG}(2,1)-t&\dots&U_{\RG}(2,c_{\RG})-t\\
 U_{\RG}(c_{\RG},1)-t&\dots&U_{\RG}(c_{\RG},c_{\RG})-t\\
 \end{pmatrix}
 $$
+}
+
+\frame{
+
+\textbf{Theorem.}\\
+Let $f_{h}(k):[1,c_{\bar h}]\to[1,c_h]$ be the best response of player $h\in\{\NH, \RG\}$ to the diversion threshold of $\bar h\ne h$ ($\bar h\in\{\NH, \RG\}$).
+
+If $f_{h}(k)$ is a non-decreasing function in $k$ then the game has at least one Nash Equilibrium in Pure Strategies.\\
+}
+
+\frame{
+$$\begin{array}{cc}
+\includegraphics[width=.5\textwidth]{./Images/best_responses_ex_for_proof_NH.pdf}&
+\includegraphics[width=.5\textwidth]{./Images/best_responses_ex_for_proof_RG.pdf}
+\end{array}$$
+}
+
+\frame{
+\begin{center}
+    \begin{tikzpicture}
+        \draw  (0,0) rectangle (4,3);
+        \draw [dashed, red, thick] (0,1) -- (4,1);
+        \draw [dashed, red, thick] (3,0) -- (3,3);
+        \node at (-.5,1) {$K_{\NH}$};
+        \node at (3,3.25) {$K_{\RG}$};
+        \node at (1.5,2) {$\lambda_{h}^{(a)}$};
+        \node at (3.5,2) {$\lambda_{h}^{(b)}$};
+        \node at (1.5,.5) {$\lambda_{h}^{(c)}$};
+        \node at (3.5,.5) {$\lambda_{h}^{(d)}$};
+    \end{tikzpicture}
+\end{center}
+\textbf{Lemma.}\\
+\begin{itemize}
+
+\item If $\lambda_{\NH}^{(a)}\leq \lambda_{\NH}^{(b)}$ and $\lambda_{\NH}^{(c)}\leq \lambda_{\NH}^{(d)}$ then $f_{\NH}(k)$ is a non-decreasing function in $k$.
+\item If $\lambda_{\RG}^{(a)}\leq \lambda_{\RG}^{(c)}$ and $\lambda_{\RG}^{(b)}\leq \lambda_{\RG}^{(d)}$ then $f_{\RG}(k)$ is a non-decreasing function in $k$.
+
+\end{itemize}
+}
+
+
+\frame{
+\begin{center}
+\includegraphics[width=.8\textwidth]{./Images/proof.pdf}
+\end{center}
+}
+
+\frame{
+$$
+\begin{array}{cc}
+\includegraphics[width=.5\textwidth]{./Images/best_responses_model1.pdf}&
+\includegraphics[width=.5\textwidth]{./Images/best_responses_model1_t=0_6.pdf}\\
+\text{($t=0.8$)}&\text{($t=0.6$)}
+\end{array}
+$$
+}
+
+\frame{
+\Huge
+$$\text{PoA}={{T^*}\over{\widetilde{T}}}$$
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=.8\textwidth]{./Images/model2targetvdemand.pdf}
+\end{center}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=.8\textwidth]{./Images/argminPoAmodel2.pdf}
+\end{center}
+}
+
+\frame{
+\frametitle{Conclusions}
+\begin{itemize}
+\item Developed a strategic form game representation of CCU interaction;
+\item Proved structural properties of equilibrium behaviour;
+\item Identified a potential justified approach to obtaining policies.
+\end{itemize}
+\pause
+
+    \textbf{Measuring the Price of Anarchy in Critical Care Unit Interactions}, \textit{Submitted to OMEGA}
+
+}
+
+\frame{
+\begin{center}
+\href{}{+Vincent.Knight}\\
+\href{}{@drvinceknight}\\
+\framebox{\url{drvinceknight.github.io/Talks}}\\
+\vspace{1cm}
+\href{}{@IzabelaKomenda}\\
+Professor Jeff Griffiths
+\end{center}
 }
 
 \end{document}
