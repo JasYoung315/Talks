@@ -34,8 +34,16 @@ for dir in directories:
                     <p>
                     <a href="%s">(Source files)</a>
                     </p>
-                    </li>
                     """ % (date, extension[1:], talk, title, 'https://github.com/drvinceknight/Talks/tree/gh-pages/' + dir ))
+        if os.path.isfile(root + dir + "/screencast" ):
+            index.write("""
+                        <p>
+                        <a href="%s">(Screencast)</a>
+                        </p>
+                        """ % open(root+dir+"/screencast",'r').read())
+        index.write("""
+                    </li>
+                    """)
 index.write("""
             </ul>
             </div>
