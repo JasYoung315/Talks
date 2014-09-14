@@ -12,6 +12,9 @@
 \usetikzlibrary{arrows}
 \usetikzlibrary{backgrounds}
 
+\newcommand{\NH}{\text{NH}}
+\newcommand{\RG}{\text{RG}}
+
 \setbeamertemplate{navigation symbols}{}
 
 \begin{document}
@@ -151,4 +154,332 @@
 
     \end{center}
 }
+
+\frame{
+    \begin{center}
+    \includegraphics[width=.8\textwidth]{./Images/varyinglambda.pdf}
+    \end{center}
+}
+
+\frame{
+        \textbf{Price of Anarchy in Public Services} \textit{EJORS}, 2013.
+}
+
+
+\frame{
+    \begin{center}
+    \Huge What about the controllers?
+    \end{center}
+}
+
+\frame{
+    \begin{center}
+    \begin{tikzpicture}
+    \node (A) at (0,0) [draw] {1};
+    \node (B) at (2,0) [draw] {2};
+    \draw [->] (-1,0) -- (A);
+    \draw [->] (3,0) -- (B);
+    \draw [->] (-1,0) -- ($(A)+(-.5,0)$) -- ($(A)+(-.5,.5)$) -- ($(A)+(.5,.5)$) -- ($(A)+(.5,.1)$) -- ($(B)+(-.4,.1)$);
+    \draw [->] (3,0) -- ($(B)+(.5,0)$) -- ($(B)+(.5,-.5)$) -- ($(B)+(-.5,-.5)$) -- ($(B)+(-.5,-.1)$) -- ($(A)+(.4,-.1)$);
+    \draw [->] (3,0) -- (B);
+    \node at ($(A) + (0,.8)$) {Divert?};
+    \node at ($(B) + (0,-.8)$) {Divert?};
+    \end{tikzpicture}
+    \end{center}
+}
+
+\frame{
+    \begin{center}
+    \begin{tikzpicture}
+    \draw  (0,0) rectangle (4,3);
+    \draw [dashed, red, thick] (0,1) -- (4,1);
+    \draw [dashed, red, thick] (3,0) -- (3,3);
+    \node at (-.5,1) {$K_{1}$};
+    \node at (3,3.25) {$K_{2}$};
+    \node at (1.5,2) {$\lambda_{h}^{(a)}$};
+    \node at (3.5,2) {$\lambda_{h}^{(b)}$};
+    \node at (1.5,.5) {$\lambda_{h}^{(c)}$};
+    \node at (3.5,.5) {$\lambda_{h}^{(d)}$};
+    \end{tikzpicture}
+    \end{center}
+}
+
+\frame{
+    \begin{center}
+    \begin{tabular}{cl}
+    \toprule
+        Parameter                   & Interpretation\\
+        \midrule
+        $h\in\{1,2\}$               & CCU\\
+        $c_h$                       & Capacity of CCU\\
+        $K_h$                       & Cutoff strategy of CCU\\
+        $\lambda_{h}^{\text{area}}$ & Demand rate\\
+        $\mu_{h}$                   & Service rate of CCU\\
+        \toprule
+        \end{tabular}
+    \end{center}
+}
+
+\frame{
+\begin{center}
+    \only<1>{
+        \input{mc.tex}
+    }
+    \only<2>{
+    \begin{tikzpicture}[scale=1, every node/.style={scale=1}]
+    % -----------------------------------------------
+    % Boundaries ------------------------------------
+    % -----------------------------------------------
+    \draw [dashed, line width=1mm, red, opacity=.3] (2,-3) -- (10,-3);
+    \draw [dashed, line width=1mm, red, opacity=.3] (6,1) -- (6,-7);
+    %\tikzstyle{state}=[ellipse, draw, fill=blue!10, minimum width=2cm];
+    %\tikzstyle{state}=[rectangle, draw, fill=blue!10, minimum width=2cm];
+    \tikzstyle{state}=[minimum width=2cm, font=\boldmath];
+
+    % -----------------------------------------------
+    % Fourth row--------------------------------------
+    % -----------------------------------------------
+    \node (ellipsisd1) at ($(0,0) + (3,0)$) {$\dots$};
+    \node(dk) at ($(ellipsisd1) + (3,0)$) {$\vdots$};
+    \node (ellipsisd2) at ($(dk) + (3,0)$) {$\dots$};
+    % Transitions -----------------------------------
+    % On Row:
+    \draw (ellipsisd1) edge[out=45,in=135,->,thick] node [above] {\tiny$\lambda_{\RG}^{(a)}$} (dk);
+    \draw (ellipsisd1) edge[out=-45,in=-135,<-,thick] node [below] {\tiny$\mu_{\RG}$} (dk);
+
+    \draw (dk) edge[out=45,in=135,->,thick] node [above] {\tiny$\lambda_{\RG}^{(b)}$} (ellipsisd2);
+    \draw (dk) edge[out=-45,in=-135,<-,thick] node [below] {\tiny$\mu_{\RG}$} (ellipsisd2);
+
+    % -----------------------------------------------
+    % Fifth row--------------------------------------
+    % -----------------------------------------------
+    \node (ellipsise1) at ($(0,-3) + (3,0)$) {$\dots$};
+    \node(ek) [state] at ($(ellipsise1) + (3,0)$) {$(K_{\NH},K_{\RG})$};
+    \node (ellipsise2) at ($(ek) + (3,0)$) {$\dots$};
+    % Transitions -----------------------------------
+    % On Row:
+    \draw (ellipsise1) edge[out=45,in=135,->,thick] node [above] {\tiny$\lambda_{\RG}^{(c)}$} (ek);
+    \draw (ellipsise1) edge[out=-45,in=-135,<-,thick] node [below] {\tiny$\mu_{\RG}$} (ek);
+
+    \draw (ek) edge[out=45,in=135,->,thick] node [above] {\tiny$\lambda_{\RG}^{(d)}$} (ellipsise2);
+    \draw (ek) edge[out=-45,in=-135,<-,thick] node [below] {\tiny$\mu_{\RG}$} (ellipsise2);
+
+    % With previous row:
+
+    \draw (ellipsisd1) edge[out=-125,in=125,->,thick] node [left] {\tiny$\lambda_{\NH}^{(a)}$} (ellipsise1);
+    \draw (ellipsisd1) edge[out=-55,in=55,<-,thick] node [right] {\tiny$\mu_{\NH}$} (ellipsise1);
+
+    \draw (dk) edge[out=-125,in=125,->,thick] node [left] {\tiny$\lambda_{\NH}^{(b)}$} (ek);
+    \draw (dk) edge[out=-55,in=55,<-,thick] node [right] {\tiny$\mu_{\NH}$} (ek);
+
+    \draw (ellipsisd2) edge[out=-125,in=125,->,thick] node [left] {\tiny$\lambda_{\NH}^{(b)}$} (ellipsise2);
+    \draw (ellipsisd2) edge[out=-55,in=55,<-,thick] node [right] {\tiny$\mu_{\NH}$} (ellipsise2);
+    % Sixth row--------------------------------------
+    \node (ellipsisf1) at ($(3,-3) + (0,-3)$) {$\dots$};
+    \node(fk) at ($(ellipsisf1) + (3,0)$) {$\vdots$};
+    \node (ellipsisf2) at ($(fk) + (3,0)$) {$\dots$};
+    % Transitions -----------------------------------
+    % On Row:
+
+    \draw (ellipsisf1) edge[out=45,in=135,->,thick] node [above] {\tiny$\lambda_{\RG}^{(c)}$} (fk);
+    \draw (ellipsisf1) edge[out=-45,in=-135,<-,thick] node [below] {\tiny$\mu_{\RG}$} (fk);
+
+    \draw (fk) edge[out=45,in=135,->,thick] node [above] {\tiny$\lambda_{\RG}^{(d)}$} (ellipsisf2);
+    \draw (fk) edge[out=-45,in=-135,<-,thick] node [below] {\tiny$\mu_{\RG}$} (ellipsisf2);
+
+    % With previous row:
+
+    \draw (ellipsise1) edge[out=-125,in=125,->,thick] node [left] {\tiny$\lambda_{\NH}^{(c)}$} (ellipsisf1);
+    \draw (ellipsise1) edge[out=-55,in=55,<-,thick] node [right] {\tiny$\mu_{\NH}$} (ellipsisf1);
+
+    \draw (ek) edge[out=-125,in=125,->,thick] node [left] {\tiny$\lambda_{\NH}^{(d)}$} (fk);
+    \draw (ek) edge[out=-55,in=55,<-,thick] node [right] {\tiny$\mu_{\NH}$} (fk);
+
+    \draw (ellipsise2) edge[out=-125,in=125,->,thick] node [left] {\tiny$\lambda_{\NH}^{(d)}$} (ellipsisf2);
+    \draw (ellipsise2) edge[out=-55,in=55,<-,thick] node [right] {\tiny$\mu_{\NH}$} (ellipsisf2);
+
+    \end{tikzpicture}
+    }
+\end{center}
+}
+
+\frame{
+\textbf{Theorem.}\\
+Let $f_{h}(k):[1,c_{\bar h}]\to[1,c_h]$ be the best response of player $h\in\{\NH, \RG\}$ to the diversion threshold of $\bar h\ne h$ ($\bar h\in\{\NH, \RG\}$).
+
+If $f_{h}(k)$ is a non-decreasing function in $k$ then the game has at least one Nash Equilibrium in Pure Strategies.\\
+}
+
+\frame{
+$$
+A =
+\begin{pmatrix}
+(U_{\NH}(1,1)-t)^2&\dots&(U_{\NH}(1,c_{\RG})-t)^2\\
+(U_{\NH}(2,1)-t)^2&\dots&(U_{\NH}(2,c_{\RG})-t)^2\\
+\vdots&\ddots&\vdots\\
+(U_{\NH}(c_{\NH},1)-t)^2&\dots&(U_{\NH}(c_{\NH},c_{\RG})-t)^2\\
+\end{pmatrix}
+$$
+\vspace{1cm}
+$$
+B =
+\begin{pmatrix}
+(U_{\RG}(1,1)-t)^2&\dots&(U_{\RG}(1,c_{\RG})-t)^2\\
+(U_{\RG}(2,1)-t)^2&\dots&(U_{\RG}(2,c_{\RG})-t)^2\\
+\vdots&\ddots&\vdots\\
+(U_{\RG}(c_{\RG},1)-t)^2&\dots&(U_{\RG}(c_{\RG},c_{\RG})-t)^2\\
+\end{pmatrix}
+$$
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=.8\textwidth]{./Images/model2targetvdemand.pdf}
+\end{center}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=.8\textwidth]{./Images/argminPoAmodel2.pdf}
+\end{center}
+}
+
+\frame{
+    \textbf{Measuring the Price of Anarchy in Critical Care Unit Interactions}, \textit{Submitted to OMEGA}
+
+}
+
+\frame{
+    \begin{center}
+        \includegraphics[width=.9\textwidth]{./Images/photo.jpg}
+    \end{center}
+}
+
+\frame{
+    \begin{tikzpicture}
+        % First hospital
+        \draw [fill=blue!20] (0,0) rectangle (3,2);
+        \draw [fill=red!20] (4,.5) rectangle (6,1.5);
+        \draw [<-] (3,1) -- (4,1);
+        \draw [<-] (7,1) -- (6,1);
+        \node at (3.5, 1.3) {\tiny{$1-p^{(1)}$}};
+        \node at (6.5, 1.3) {\tiny{$p^{(1)}$}};
+        \node at (1.5,2.5) {$C^{(1)} - \color{blue}{c^{(1)}}$};
+        \node at (5,2) {\color{blue}{$c^{(1)}$}};
+        \node at (1.5,1) {$\mu_2^{(1)}$};
+        \node at (5,1) {$\mu_1^{(1)}$};
+
+        % Second hospital
+        \draw [fill=red!20] (5,-3.5) rectangle (7,-4.5);
+        \draw [fill=blue!20] (8,-3) rectangle (11,-5);
+        \draw [<-] (8,-4) -- (7,-4);
+        \draw [<-] (4,-4) -- (5,-4);
+        \node at (7.5, -3.7) {\tiny{$1-p^{(2)}$}};
+        \node at (4.5, -3.7) {\tiny{$p^{(2)}$}};
+        \node at (6,-5) {$\color{red}{c^{(2)}}$};
+        \node at (9.5,-5.5) {$C^{(2)} - \color{red}{c^{(2)}}$};
+        \node at (6,-4) {$\mu_1^{(2)}$};
+        \node at (9.5,-4) {$\mu_2^{(2)}$};
+
+        % Ambulance
+        \node at (5.5,-1.75) {$\Lambda$};
+        \draw [->] (5.5,-1.5) -- (5.5,-.5);
+        \draw [->] (5.5,-2) -- (5.5,-3);
+    \end{tikzpicture}
+}
+
+\frame{
+    \begin{center}
+        \tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
+        \tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm]
+        \tikzstyle{player} = [text width=5em, draw, text centered, rectangle, fill=blue!20, inner sep=1pt]
+        \tikzstyle{nature} = [minimum width=3pt,circle,  draw, fill=red!20, inner sep=1pt]
+        \tikzstyle{end} = [circle, minimum width=3pt, fill, inner sep=0pt, right]
+        \tikzstyle{corner} = [inner sep=0pt, outer sep=0pt, draw,circle]
+        \begin{tikzpicture}[grow=right, sloped, scale=.6]
+            \node[player]{Hospital 1}
+            child {node [corner] (A1) {} node [right=2pt]{$C^{(1)} - 1$} }
+            child {node [corner] (A2) {} node [right=2pt] {$1$} edge from parent node[above] {$\color{blue}{c^{(1)}}$}} ;
+            \draw [bend right, dashed] (A1) to (A2);
+            \node (B3) [player,right=3pt] at ($(A1)!0.5!(A2)$) {Hospital 2}
+            child {node [corner] (A3) {} node [right=2pt]{$C^{(2)} - 1$} }
+            child {node [corner] (A4) {} node [right=2pt] {$1$} edge from parent node[above] {$\color{red}{c^{(2)}}$}} ;
+            \draw [bend right] (A3) to (A4);
+            \node (e) [player,right=3pt] at ($(A3)!0.5!(A4)$) {Ambulance}
+            child {node [corner] (A5) {} node [right=2pt]{$\Lambda$} }
+            child {node [corner] (A6) {}  node [right=2pt] {$0$}edge from parent node[above] {$\lambda_1$}} ;
+            \draw [bend right] (A5) to (A6);
+            \node (e) [end,right=7pt] at ($(A5)!0.5!(A6)$) {};
+        \end{tikzpicture}
+    \end{center}
+    \pause
+    \vspace{1cm}
+    $$(|u_1^{(1)}-u_2^{(1)}|,|u_1^{(2)}-u_2^{(2)}|,|w^{(1)}-w^{(2)}|)$$
+}
+
+\frame{
+    $$
+        S = \left\{(i,j)\in\mathbb{Z}^{2}_{\geq 0}\;|\;0\leq j \leq c_1+c_2,\; 0\leq i\leq c_1+N-\max(j-c_2,0)\right\}
+    $$
+
+    \centering
+    \begin{tikzpicture}
+        \draw (0,1) rectangle (2,3);
+        \draw (3,1) rectangle (5,3);
+
+        \node at (1,1.5) [circle, fill, color=blue] {};
+        \node (blocked) at (1,2.5) [circle, fill, color=red] {};
+
+        \node at (-1,2) [circle, fill, color=blue] {};
+        \node at (-2,2) [circle, fill, color=blue] {};
+
+        \node at (4,1.5) [circle, fill, color=red] {};
+        \node at (4,2.5) [circle, fill, color=red] {};
+
+        \node (label) at (3,4) {blocked};
+        \draw [->] (label) -- (blocked);
+    \end{tikzpicture}
+}
+
+\frame{
+    $$
+    q_{(i_1,j_1), (i_2,j_2)}=
+    \begin{cases}
+        \Lambda, & \text{ if } \delta = (1,0)\\
+        \min(c_1-\max(j_1-c_2,0),i_1)(1-p)\mu_1, & \text{ if } \delta = (-1,1)\\
+        \min(c_1-\max(j_1-c_2,0),i_1)p\mu_1, & \text{ if } \delta = (-1,0)\\
+        \min(c_2, j_1)\mu_2, & \text{ if } \delta = (0,-1)
+    \end{cases}
+    $$
+}
+
+\frame{
+    \begin{center}
+    \input{Images/markov_chain_example.tex}
+    \end{center}
+}
+
+\frame{
+
+    \begin{columns}
+        \column{.5\textwidth}
+        \begin{center}
+        \texttt{Analytical}
+        \includegraphics[width=\textwidth]{./Images/{10.000-15.000-12.000-4.000-0.400-1.000-0.200-40000.000-10000.000-32-markov_chain}.pdf}\\
+        \includegraphics[width=\textwidth]{./Images/{10.000-15.000-12.000-5.000-0.400-1.000-0.200-40000.000-10000.000-32-markov_chain}.pdf}
+        \end{center}
+        \column{.5\textwidth}
+        \begin{center}
+        \texttt{Simulation}
+        \includegraphics[width=\textwidth]{./Images/{10.000-15.000-12.000-4.000-0.400-1.000-0.200-40000.000-10000.000-32-simulation}.pdf}\\
+        \includegraphics[width=\textwidth]{./Images/{10.000-15.000-12.000-5.000-0.400-1.000-0.200-40000.000-10000.000-32-simulation}.pdf}
+        \end{center}
+    \end{columns}
+}
+
+\frame{
+
+}
+
+
 \end{document}
